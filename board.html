@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentra las Parejas - Tablero</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-layout">
+        <!-- Panel Izquierdo / Superior -->
+        <aside class="sidebar">
+            <div class="sidebar-block actions-block">
+                <button id="btn-back-sidebar" class="btn-secondary">Menú Principal</button>
+                <button id="btn-restart-sidebar" class="btn-primary">Reiniciar</button>
+            </div>
+            
+            <div class="sidebar-block turn-block" id="turn-indicator-box">
+                <h3 id="lbl-turn-title">El turno es de:</h3>
+                <h2 id="current-turn-name">Jugador 1</h2>
+                <div id="timer-container" class="timer-container hidden">
+                    <div class="timer-bar-bg">
+                        <div id="timer-bar" class="timer-bar"></div>
+                    </div>
+                    <span id="timer-text" class="timer-text">10s</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-block scores-block">
+                <h3 id="lbl-scores-title">Puntuaciones</h3>
+                <div class="scores-container" id="scores-container">
+                    <!-- Puntuaciones inyectadas con JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Tablero Principal -->
+        <main class="container-board">
+            <div id="game-board" class="game-board">
+                <!-- Cartas inyectadas con JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Overlay de Fin de Juego -->
+    <div id="game-over-modal" class="modal hidden">
+        <div class="glass-panel text-center">
+            <h2 id="winner-title" class="title">¡Juego Terminado!</h2>
+            <p id="winner-text" class="winner-text"></p>
+            <button id="btn-restart" class="btn-primary">Jugar de Nuevo</button>
+            <button id="btn-menu" class="btn-secondary margin-top-1">Ir al Menú</button>
+        </div>
+    </div>
+
+    <!-- Fireworks Canvas for winning -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <script src="game.js"></script>
+</body>
+</html>

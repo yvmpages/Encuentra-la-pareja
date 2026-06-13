@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentra las Parejas - Jugadores</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        .players-config-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-height: 50vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .player-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeIn 0.4s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        .color-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--panel-border);
+            transition: transform 0.3s ease;
+        }
+
+        .color-indicator:hover {
+            transform: scale(1.15);
+        }
+
+        .player-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 2px solid var(--panel-border);
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-family: inherit;
+            background: var(--box-bg);
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .player-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+
+        .buttons-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Custom scrollbar */
+        .players-config-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .players-config-list::-webkit-scrollbar-track {
+            background: var(--panel-bg);
+            border-radius: 4px;
+        }
+
+        .players-config-list::-webkit-scrollbar-thumb {
+            background: var(--panel-border);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="glass-panel" style="max-width: 500px; width: 100%;">
+            <h1 id="page-title" class="title">Nombres de Jugadores</h1>
+
+            <div id="players-list" class="players-config-list">
+                <!-- Se llenará con JS -->
+            </div>
+
+            <div class="buttons-row">
+                <button id="btn-back" class="btn-secondary"
+                    style="width: 30%; border-radius: 12px; font-weight: 700;">🔙</button>
+                <button id="btn-play" class="btn-primary" style="margin-top: 0; flex: 1;">¡Comenzar!</button>
+            </div>
+        </div>
+    </main>
+    <script src="players.js"></script>
+</body>
+
+</html>

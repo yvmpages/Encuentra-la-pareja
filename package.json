@@ -1,0 +1,30 @@
+{
+  "name": "encuentra-la-pareja",
+  "version": "1.0.0",
+  "description": "Juego Encuentra la Pareja",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "Yeison",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.2"
+  },
+  "build": {
+  "appId": "com.yeison.encuentralapareja",
+  "productName": "Encuentra la Pareja",
+  "win": {
+    "target": "nsis",
+    "icon": "assets/icon.ico"
+  },
+  "nsis": {
+    "installerIcon": "assets/icon.ico",
+    "uninstallerIcon": "assets/icon.ico",
+    "installerHeaderIcon": "assets/icon.ico"
+  }
+}
+}
