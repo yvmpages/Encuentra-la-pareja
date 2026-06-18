@@ -27,8 +27,22 @@
     </header>
 
     <main class="container">
-        <div class="glass-panel">
-            <h1 id="game-title" class="title">Encuentra las parejas</h1>
+        <!-- Welcome View -->
+        <div id="welcome-view" class="glass-panel welcome-panel">
+            <div class="logo-container">
+                <img src="Logo.png" alt="Encuentra la pareja Logo" class="logo-img">
+            </div>
+            <button id="btn-jugar-welcome" class="btn-primary btn-huge">Jugar</button>
+        </div>
+
+        <!-- Configuration View -->
+        <div id="config-view" class="glass-panel config-panel hidden">
+            <div class="config-header">
+                <button id="btn-back-welcome" class="btn-back-arrow" aria-label="Volver al inicio">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-back"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h1 id="game-title" class="title">Configuración</h1>
+            </div>
             
             <div class="input-group">
                 <label id="lbl-cards" for="cards-input">Número de fichas</label>
@@ -50,7 +64,7 @@
                 </div>
             </div>
 
-            <button id="btn-play" class="btn-primary" disabled>Jugar</button>
+            <button id="btn-empezar-config" class="btn-primary" disabled>Empezar</button>
         </div>
     </main>
     <script src="script.js"></script>

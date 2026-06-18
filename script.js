@@ -1,23 +1,25 @@
 const dict = {
     es: {
-        title: "Encuentra las parejas",
+        title: "Configuración",
         cardsLabel: "Número de fichas",
         playersLabel: "Cantidad de jugadores",
         timeLabel: "Tiempo por turno",
         timeOptions: ["Sin tiempo", "10seg", "15seg", "30seg", "45seg", "1min"],
         errorOdd: "⚠ Solo se puede seleccionar un número par de fichas.",
         errorRange: "⚠ Elige entre 6 y 40 fichas.",
-        btnPlay: "Jugar"
+        btnPlayWelcome: "Jugar",
+        btnStartGame: "Empezar"
     },
     en: {
-        title: "Find the pairs",
+        title: "Game Settings",
         cardsLabel: "Number of cards",
         playersLabel: "Number of players",
         timeLabel: "Time per turn",
         timeOptions: ["No limit", "10sec", "15sec", "30sec", "45sec", "1min"],
         errorOdd: "⚠ Please select an even number of cards.",
         errorRange: "⚠ Choose between 6 and 40 cards.",
-        btnPlay: "Play"
+        btnPlayWelcome: "Play",
+        btnStartGame: "Start"
     }
 };
 
@@ -35,11 +37,17 @@ const iconMoon = document.getElementById('icon-moon');
 const langEsBtn = document.getElementById('lang-es');
 const langEnBtn = document.getElementById('lang-en');
 
+const welcomeView = document.getElementById('welcome-view');
+const configView = document.getElementById('config-view');
+
+const btnJugarWelcome = document.getElementById('btn-jugar-welcome');
+const btnEmpezarConfig = document.getElementById('btn-empezar-config');
+const btnBackWelcome = document.getElementById('btn-back-welcome');
+
 const cardsInput = document.getElementById('cards-input');
 const errorMessage = document.getElementById('error-message');
 const playersGrid = document.getElementById('players-grid');
 const timeGrid = document.getElementById('time-grid');
-const btnPlay = document.getElementById('btn-play');
 
 // Texts
 const titleEl = document.getElementById('game-title');
@@ -52,6 +60,7 @@ function init() {
     generatePlayerBoxes();
     generateTimeBoxes();
     checkValidation();
+    setupNavigation();
 }
 
 // Theme Toggle
@@ -75,7 +84,8 @@ function updateTexts() {
     lblCards.textContent = dict[currentLang].cardsLabel;
     lblPlayers.textContent = dict[currentLang].playersLabel;
     lblTime.textContent = dict[currentLang].timeLabel;
-    btnPlay.textContent = dict[currentLang].btnPlay;
+    btnJugarWelcome.textContent = dict[currentLang].btnPlayWelcome;
+    btnEmpezarConfig.textContent = dict[currentLang].btnStartGame;
     generateTimeBoxes();
     checkValidation(); // updates error message language
 }
@@ -152,14 +162,47 @@ function checkValidation() {
         errorMessage.classList.add('hidden');
     }
 
-    btnPlay.disabled = !isValid;
+    btnEmpezarConfig.disabled = !isValid;
 }
 
 cardsInput.addEventListener('input', checkValidation);
 cardsInput.addEventListener('change', checkValidation);
 
-// Play Action
-btnPlay.addEventListener('click', () => {
+// Setup Views Navigation
+function setupNavigation() {
+    // Welcome "Jugar" to Config View
+    btnJugarWelcome.addEventListener('click', () => {
+        welcomeView.classList.add('fade-out');
+        setTimeout(() => {
+            welcomeView.classList.add('hidden');
+            welcomeView.classList.remove('fade-out');
+            
+            configView.classList.remove('hidden');
+            configView.classList.add('fade-in');
+            setTimeout(() => {
+                configView.classList.remove('fade-in');
+            }, 500);
+        }, 400);
+    });
+
+    // Config Back Arrow to Welcome View
+    btnBackWelcome.addEventListener('click', () => {
+        configView.classList.add('fade-out');
+        setTimeout(() => {
+            configView.classList.add('hidden');
+            configView.classList.remove('fade-out');
+            
+            welcomeView.classList.remove('hidden');
+            welcomeView.classList.add('fade-in');
+            setTimeout(() => {
+                welcomeView.classList.remove('fade-in');
+            }, 500);
+        }, 400);
+    });
+}
+
+// Play Action (Start Game)
+btnEmpezarConfig.addEventListener('click', () => {
     // Collect settings
     const gameState = {
         language: currentLang,
